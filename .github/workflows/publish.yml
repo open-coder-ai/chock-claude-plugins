@@ -20,12 +20,11 @@ on:
         default: main
       framework_ref:
         # A tag is the right default -- a release should be reproducible from two pinned
-        # refs. It points at main only until the first framework release that contains the
-        # plugin emitter: v0.1.1 predates it, so pinning there would fail on --format claude.
-        # Move this back to a tag when that release ships.
+        # refs. v0.2.0 is the first framework release containing the plugin emitter.
+        # Bump this default with each framework release the published trees build from.
         description: Framework ref to build with
         type: string
-        default: main
+        default: v0.2.0
       dry_run:
         description: Build and show the diff without pushing
         type: boolean
