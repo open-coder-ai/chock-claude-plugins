@@ -16,7 +16,7 @@
       "name": "block-destructive-commands",
       "source": "./claude/block-destructive-commands",
       "description": "Best-effort guard against destructive commands: rm -rf targeting absolute, home, or root-adjacent paths; git push --force (not --force-with-lease); git reset --hard; git clean -f; kubectl delete; terraform destroy. Known bypass classes include aliases, quoted arguments, non-standard clients, and scripts that invoke these commands indirectly. This is friction, not a security boundary. [Session-enforced via a PreToolUse hook; fails open (allows) if python3 or a usable bash is unavailable.]",
-      "version": "0.0.3"
+      "version": "0.0.4"
     },
     {
       "name": "block-invisible-unicode",
@@ -28,7 +28,7 @@
       "name": "block-no-verify",
       "source": "./claude/block-no-verify",
       "description": "Best-effort guard against bypassing git hooks via git commit/push --no-verify or -n. Known bypass classes include aliases, wrapper scripts, and non-standard clients. Fix the underlying hook failure instead of skipping validation. [Session-enforced via a PreToolUse hook; fails open (allows) if python3 or a usable bash is unavailable.]",
-      "version": "0.0.1"
+      "version": "0.0.2"
     },
     {
       "name": "block-wildcard-agent-permissions",
