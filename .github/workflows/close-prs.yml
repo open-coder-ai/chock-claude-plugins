@@ -14,6 +14,11 @@ permissions:
 
 jobs:
   redirect:
+    # Fork PRs only. The redirect rationale -- your change belongs in the catalog --
+    # applies to outside contributions; a branch in this repository is the maintainer's
+    # own infrastructure work (workflows, config), which is not generated content. This
+    # guard closed the repo's own first hardening PR before the condition existed.
+    if: github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea  # v7
