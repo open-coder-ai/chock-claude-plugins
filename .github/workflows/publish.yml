@@ -39,13 +39,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out this distribution repo
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
           persist-credentials: false
           path: dist
 
       - name: Check out the catalog at the ref being published
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
           persist-credentials: false
           repository: open-coder-ai/chock-catalog
@@ -53,7 +53,7 @@ jobs:
           path: catalog
 
       - name: Check out the framework
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
           persist-credentials: false
           repository: open-coder-ai/chock
