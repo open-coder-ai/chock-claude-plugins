@@ -21,17 +21,20 @@ jobs:
       - name: Check out this distribution repo
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
         with:
+          persist-credentials: false
           path: dist
 
       - name: Check out the framework
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
         with:
+          persist-credentials: false
           repository: open-coder-ai/chock
           path: framework
 
       - name: Check out the catalog
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
         with:
+          persist-credentials: false
           repository: open-coder-ai/chock-catalog
           path: catalog
 
@@ -59,7 +62,9 @@ jobs:
 
       - name: Validate every package with Claude Code's own validator
         run: |
-          npm install -g @anthropic-ai/claude-code
+          # Pinned: this binary IS the verification step, so a floating version means the
+          # check itself changes under us without review.
+          npm install -g @anthropic-ai/claude-code@2.1.239
           failed=0
           for d in dist/claude/*/; do
             claude plugin validate "$d" || failed=1
