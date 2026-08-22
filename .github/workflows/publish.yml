@@ -39,20 +39,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out this distribution repo
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
+          persist-credentials: false
           path: dist
 
       - name: Check out the catalog at the ref being published
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
+          persist-credentials: false
           repository: open-coder-ai/chock-catalog
           ref: ${{ inputs.catalog_ref }}
           path: catalog
 
       - name: Check out the framework
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
+          persist-credentials: false
           repository: open-coder-ai/chock
           ref: ${{ inputs.framework_ref }}
           path: framework
@@ -86,7 +89,9 @@ jobs:
 
       - name: Validate every package
         run: |
-          npm install -g @anthropic-ai/claude-code
+          # Pinned: this binary IS the verification step, so a floating version means the
+          # check itself changes under us without review.
+          npm install -g @anthropic-ai/claude-code@2.1.239
           failed=0
           for d in dist/claude/*/; do
             claude plugin validate "$d" || failed=1
@@ -101,6 +106,11 @@ jobs:
       - name: Publish
         if: ${{ inputs.dry_run == false }}
         working-directory: dist
+        env:
+          # Dispatch inputs are typed by whoever runs the workflow; expanded by the runner
+          # into shell text they would execute, through the environment they stay data.
+          CATALOG_REF: ${{ inputs.catalog_ref }}
+          FRAMEWORK_REF: ${{ inputs.framework_ref }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -109,5 +119,5 @@ jobs:
             exit 0
           fi
           git add -A
-          git commit -m "generated: catalog ${{ inputs.catalog_ref }} (framework ${{ inputs.framework_ref }})"
+          git commit -m "generated: catalog $CATALOG_REF (framework $FRAMEWORK_REF)"
           git push
