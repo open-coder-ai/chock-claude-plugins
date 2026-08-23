@@ -12,7 +12,7 @@ package ships skill text the client reads; nothing stops a violation.
 | plugin | version | in this client | what it does |
 | :--- | :--- | :--- | :--- |
 | [`agent-discipline`](https://github.com/open-coder-ai/chock-catalog/blob/main/docs/agent-discipline/README.md) | 0.0.1 | advisory | trigger: edits without reading, unverified completion claims, weakened tests, dead code |
-| [`block-destructive-commands`](https://github.com/open-coder-ai/chock-catalog/blob/main/docs/block-destructive-commands/README.md) | 0.0.5 | enforces | Best-effort guard against destructive commands: rm -rf targeting absolute, home, or root-adjacen... |
+| [`block-destructive-commands`](https://github.com/open-coder-ai/chock-catalog/blob/main/docs/block-destructive-commands/README.md) | 0.0.6 | enforces | Best-effort guard against destructive commands: rm -rf targeting absolute, home, or root-adjacen... |
 | [`block-invisible-unicode`](https://github.com/open-coder-ai/chock-catalog/blob/main/docs/block-invisible-unicode/README.md) | 0.0.2 | advisory | Pre-commit gate for the mechanizable slice of prompt-injection defense: invisible and direction-... |
 | [`block-no-verify`](https://github.com/open-coder-ai/chock-catalog/blob/main/docs/block-no-verify/README.md) | 0.0.3 | enforces | Best-effort guard against bypassing git hooks via git commit/push --no-verify or -n |
 | [`block-wildcard-agent-permissions`](https://github.com/open-coder-ai/chock-catalog/blob/main/docs/block-wildcard-agent-permissions/README.md) | 0.0.2 | advisory | Pre-commit gate for the mechanizable slice of excessive agency: committed agent permission grant... |
