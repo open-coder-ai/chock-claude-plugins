@@ -2,6 +2,8 @@
 
 Chock policies packaged as installable plugins, in Claude Code's plugin format.
 
+<img src="docs/assets/hero.svg" alt="Animated replay: an agent runs git push --force and the chock guard denies it before it runs (Claude Code, exit 2)" width="720">
+
 **This repository is generated.** Every file is compiled from policy sources in
 [chock-catalog](https://github.com/open-coder-ai/chock-catalog) by
 [chock](https://github.com/open-coder-ai/chock). Pull requests here are closed with a
