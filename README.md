@@ -19,22 +19,26 @@ use any of those four, this is for you.
 /plugin install block-destructive-commands@chock
 ```
 
-For other clients, point them at this repository as a marketplace and install by plugin
-name. Clients that read the Agent Plugins 1.0 standard instead can use the
-`agent-plugins/` tree.
+Using a different agent? Each vendor has its own repo built from the same catalog,
+carrying that client's native format and deny dialect:
+[chock-copilot-plugins](https://github.com/open-coder-ai/chock-copilot-plugins)
+(Copilot CLI / VS Code, spec-shaped),
+[chock-cursor-plugins](https://github.com/open-coder-ai/chock-cursor-plugins) and
+[chock-codex-plugins](https://github.com/open-coder-ai/chock-codex-plugins).
+Clients that read the Agent Plugins 1.0 standard can use the `agent-plugins/` tree
+(advisory: the standard carries no hooks).
 
 ## What a plugin actually does — read this before installing
 
 Chock's rule is that a claim must match a mechanism. That rule applies to these packages,
-so the plugins are not equally strong and they say so. The table below is generated from
-the packages themselves, so it cannot drift from what is actually published.
+so the plugins are not equally strong and they say so.
 
 See **[PLUGINS.md](PLUGINS.md)** for the full list: every policy, its version, whether it
 enforces or advises in this client, and a link to its page in the catalog. That file is
 generated from the packages themselves, so it cannot drift from what is published.
 
-On Windows without Git Bash, the fail-open condition above is the normal case rather than
-an edge case.
+Hook behaviour on Windows (the python3 requirement, fail-open vs fail-closed clients) is
+stated per plugin in [PLUGINS.md](PLUGINS.md).
 
 **A plugin is not the same as adopting Chock.** A plugin governs one person's session on
 one client. It cannot enforce anything at commit time, it does not travel with a clone,
