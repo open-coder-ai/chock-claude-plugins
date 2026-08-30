@@ -1,5 +1,9 @@
 # chock-claude-plugins
 
+[![Generated-only](https://github.com/open-coder-ai/chock-claude-plugins/actions/workflows/generated-only.yml/badge.svg)](https://github.com/open-coder-ai/chock-claude-plugins/actions/workflows/generated-only.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Contribute upstream](https://img.shields.io/badge/contribute-chock--catalog-8957e5)](https://github.com/open-coder-ai/chock-catalog)
+
 Chock policies packaged as installable plugins, in Claude Code's plugin format.
 
 <img src="docs/assets/hero.svg" alt="Animated replay: an agent runs git push --force and the chock guard denies it before it runs (Claude Code, exit 2)" width="720">
