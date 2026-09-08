@@ -36,10 +36,12 @@ Build, so this repository works there too.
 
 ## What you get
 
-Every plugin here says whether it enforces in your client or only advises — never both, and
-never a claim past what the mechanism does. See **[PLUGINS.md](PLUGINS.md)** for the full
-list: each policy, its version, its posture in this client, and a link to its page in the
-catalog.
+Every package here says whether it enforces in your client or only advises, and never claims
+past what its mechanism does. The same policy can appear twice: as a Claude-format package
+under `claude/` that ships a `PreToolUse` hook where the policy has a guard, and as an Agent
+Plugins 1.0 package under `agent-plugins/`, which is advisory because that standard carries no
+hooks. See **[PLUGINS.md](PLUGINS.md)** for the full list: each policy, its version, its
+posture in this client, and a link to its page in the catalog.
 
 A plugin governs one person's session in one client; it doesn't run in CI or travel with a
 clone. For enforcement that follows the repository instead, install Chock directly:
