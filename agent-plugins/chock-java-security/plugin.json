@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "chock-java-security",
+  "version": "0.1.0",
+  "description": "Refuses a named set of Java constructs that cannot be correct -- string-concatenated MyBatis SQL, unescaped template output, unsafe deserialization, a wildcard CORS origin with credentials, wildcard actuator exposure, and an unverified JWT parse -- at the moment the agent writes them. Every rule carries a per-repo allow|deny|ask verdict; an absent file, pack or rule denies, so an upgrade never ships a silently inert rule. [Advisory skill only; this tree ships no hook and nothing stops a violation.]",
+  "author": {
+    "name": "chock-core"
+  },
+  "homepage": "https://github.com/open-coder-ai/chock-java-security",
+  "repository": "https://github.com/open-coder-ai/chock-java-security",
+  "license": "Apache-2.0",
+  "keywords": [
+    "chock",
+    "policy-as-code",
+    "java",
+    "security",
+    "hook",
+    "asi01"
+  ],
+  "extensions": {
+    "io.github.open-coder-ai": {
+      "artifact": "rule",
+      "enforcement": "advise",
+      "coverage_without_chock": "advisory"
+    }
+  }
+}

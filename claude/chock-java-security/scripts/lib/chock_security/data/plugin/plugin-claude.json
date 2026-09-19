@@ -1,0 +1,19 @@
+{
+  "name": "__NAME__",
+  "description": "__DESCRIPTION__ [__POSTURE__]",
+  "homepage": "__REPOSITORY__",
+  "keywords": [
+    "chock",
+    "policy-as-code",
+    "java",
+    "security",
+    "hook",
+    "asi01"
+  ],
+  "version": "__VERSION__",
+  "author": {
+    "name": "chock-core"
+  },
+  "license": "Apache-2.0",
+  "repository": "__REPOSITORY__"
+}
