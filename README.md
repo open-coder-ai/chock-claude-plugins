@@ -38,9 +38,11 @@ Build, so this repository works there too.
 
 Every package here says whether it enforces in your client or only advises, and never claims
 past what its mechanism does. The same policy can appear twice: as a Claude-format package
-under `claude/` that ships a `PreToolUse` hook where the policy has a guard, and as an Agent
-Plugins 1.0 package under `agent-plugins/`, which is advisory because that standard carries no
-hooks. See **[PLUGINS.md](PLUGINS.md)** for the full list: each policy, its version, its
+under `claude/` that ships hooks, and as an Agent Plugins 1.0 package under `agent-plugins/`,
+which is advisory because that standard carries no hooks. A Claude-format package hooks
+`PreToolUse` where the policy ships a guard script, judging the shell command; where the policy
+ships a gate it hooks `PreToolUse` on the write tools *and* `Stop`, judging the file a write
+would create and then re-reading what the turn actually left on disk. See **[PLUGINS.md](PLUGINS.md)** for the full list: each policy, its version, its
 posture in this client, and a link to its page in the catalog.
 
 A plugin governs one person's session in one client; it doesn't run in CI or travel with a
@@ -55,12 +57,12 @@ Every file here is compiled from policy sources in
 closed automatically — open them against the catalog instead.
 
 - **Generated only:** CI regenerates from the pinned catalog and fails on any difference.
-- **Byte-identical guards:** guard scripts and the hook adapter are verbatim copies of their
-  framework sources.
+- **Byte-identical guards:** each guard script is a verbatim copy of its policy's source in the
+  catalog, and the hook adapter a verbatim copy of its framework source.
 - **Best-effort, not a boundary:** guards are pattern-based filters; see
   [SECURITY.md](https://github.com/open-coder-ai/chock/blob/main/SECURITY.md).
-- This README is the exception: the one hand-written file in this repository, so it alone
-  sits outside the generated-only guarantee.
+- This README is hand-written, as are `SECURITY.md` and the workflows under `.github/`, so they
+  sit outside the generated-only guarantee.
 
 ## Part of open-coder-ai
 
