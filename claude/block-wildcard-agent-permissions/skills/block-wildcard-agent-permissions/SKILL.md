@@ -4,7 +4,7 @@ description: "The mechanizable slice of excessive agency, enforced at two points
 metadata:
   chock.artifact: hook
   chock.enforcement: block
-  chock.coverage_without_chock: advisory
+  chock.hooks: hooks/hooks.json
 ---
 
 # Block Wildcard Agent Permissions
@@ -16,4 +16,4 @@ on(commit|tool_use): block(content_regex) scan=added_lines allowlist_pragma=prag
 Wildcard agent permission grant detected. Scope the grant to specific tools or commands (e.g. Bash(git status:*), a named tool list). At commit, 'pragma: allowlist broad-agency' on the same line marks a reviewed exception; the pragma is NOT honored at tool-use, where the scanned text is a live tool argument an appended token could neutralize.
 ```
 
-This skill is advisory: the client reading it has no mechanism to enforce it. The same policy compiled by `chock` becomes a git hook that exits non-zero. See https://github.com/open-coder-ai/chock
+This policy is enforced in this client by the PreToolUse and Stop hooks installed with the plugin, subject to the fail conditions stated in the plugin description. Repo-wide enforcement across every commit and in CI still needs `chock sync`. See https://github.com/open-coder-ai/chock
