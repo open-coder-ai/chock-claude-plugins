@@ -4,7 +4,8 @@
 
 <h1 align="center">chock-claude-plugins</h1>
 
-<p align="center"><strong>Chock policies as installable Claude Code plugins — each says whether it enforces in your client or advises.</strong></p>
+<p align="center"><strong>A kill switch for your Claude Code agent's wrong moves.</strong></p>
+<p align="center">Chock policies as installable Claude Code plugins — each says whether it enforces in your client or advises.</p>
 
 <p align="center">
 
