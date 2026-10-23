@@ -24,29 +24,37 @@ You want it to move fast without being the reason a stray `rm -rf` or a force-pu
 happens. Telling it to be careful in a prompt is not a guarantee; a plugin that can refuse
 the command is closer to one — and it should be honest about which of those two it is.
 
-## The plugins moved to the chock.sh builder
+## Two ways to get these plugins
 
-Pick the policies you want and the client you run at **<https://chock.sh/coding/builder/>**;
-it gives you one command that builds them into a single plugin on your machine.
-
-**Moving from this repository** (Claude Code):
+**This marketplace: no chock on the machine.** Each policy is its own plugin, republished
+with every chock release. You need Python 3.11+ and git, and nothing else.
 
 ```bash
-# 1. for each plugin you installed from here
-/plugin uninstall <id>@chock
-# 2. then the marketplace itself
-/plugin marketplace remove chock
-# 3. then the builder's command
+# Claude Code
+/plugin marketplace add open-coder-ai/chock-claude-plugins
+/plugin install block-destructive-commands@chock
+```
+
+The Claude plugin format is also read natively by GitHub Copilot CLI, VS Code, and Grok
+Build, so this repository works there too.
+
+**The builder: one plugin, needs chock.** Pick the policies you want and the client you run
+at **<https://chock.sh/coding/builder/>**; it gives you one command that builds them into a
+single plugin on your machine. That command needs `pip install chock`:
+
+```bash
 pip install chock
 chock install --selection '<code>' --apply
 ```
 
-`<code>` is the selection the builder shows you. The plugins already need Python 3.11+ to run
-their hooks, so `pip install chock` adds a package, not a runtime.
+`<code>` is the selection the builder shows you.
 
-**This repository stops publishing on the chock.sh launch day and is archived 30 days later.**
+**Use one route for a given policy, never both.** Every copy of a plugin runs its own hook,
+so a policy installed from both places runs twice. To switch a policy from one route to the
+other, uninstall it first (`claude plugin uninstall <id>@chock`; to drop the marketplace
+too, `claude plugin marketplace remove chock`).
 
-### One policy at a time
+### Builder links, one policy at a time
 
 Each link opens the builder with that one policy preselected for Claude Code. The links pin
 `chock-catalog` at commit `e885f918a335e20dfddb4fad0331d4d5b4c5eb43`; the builder lets you add
