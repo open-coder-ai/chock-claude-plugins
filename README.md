@@ -27,7 +27,7 @@ the command is closer to one — and it should be honest about which of those tw
 ## Two ways to get these plugins
 
 **This marketplace: no chock on the machine.** Each policy is its own plugin, republished
-with every chock release. You need Python 3.11+ and git, and nothing else.
+with every chock release. You need Python 3.11+, git and a bash (Git for Windows includes one).
 
 ```bash
 # Claude Code
@@ -44,7 +44,7 @@ single plugin on your machine. That command needs `pip install chock`:
 
 ```bash
 pip install chock
-chock install --selection '<code>' --apply
+chock install --selection <code> --apply
 ```
 
 `<code>` is the selection the builder shows you.
